@@ -12,7 +12,9 @@
 
 ##### Cliente 
 1. Navege até o arquivo **index.php** pelo browser.
+
 ---
+
 ##### Requisitos
 - [Node.js](https://nodejs.org/en/)
 - [Bower](https://bower.io/)
