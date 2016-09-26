@@ -1,13 +1,24 @@
-## Websocket Chat with PHP
+# Websocket Chat with PHP :rocket:
 
-1. Change host address in index.php and server.php
+> Desenvolvido na unidade curricular **Arquitetura Cliente/Servidor** no curso **Técnico em Informática para Internet** na **Faculdade SENAC de São Miguel do Oeste**
 
-2. Go to your shell command-line interface
+#### Orientações
 
-3. type: 
-	php -q c:\path\server.php
+##### Servidor
 
-4. Using browser, navigate to index.php location to open chat page, have fun!
+1. Altere a variável *$servidor* e *$porta* no arquivo **server.php** para o ip e porta do servidor de chat;
+2. Altere a variável *wsUri* no arquivo **js/chat.js** com o mesmo ip e porta configurados anteriormente; 
+3. Na linha de comando, execute o arquivo **server.php** com o comando `php -q server.php`;
 
-
-Based on: http://www.sanwebe.com/2013/05/chat-using-websocket-php-socket
+##### Cliente 
+1. Navege até o arquivo **index.php** pelo browser.
+---
+##### Requisitos
+- [Node.js](https://nodejs.org/en/)
+- [Bower](https://bower.io/)
+- [Git](https://git-scm.com/)
+ 
+##### Bower
+- [Bootstrap](http://getbootstrap.com/)
+- [Font Awesome](http://fontawesome.io/)
+- [jQuery Emoji Plugin](https://github.com/linyows/jquery-emoji)
