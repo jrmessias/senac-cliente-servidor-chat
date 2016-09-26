@@ -1,0 +1,28 @@
+/* Chat */
+.jumbotron{
+    margin-top: 10px;
+}
+.box-message {
+    background: #FFFFFF;
+    height: 250px;
+    overflow: auto;
+    padding: 10px;
+    border: 1px solid #EEE;
+    border-radius: 5px;
+}
+
+.box-message .system-msg{
+    color: #666;
+}
+
+.box-message .system-error{
+    color: #c00;
+}
+
+.box-message .system-success{
+    color: #090;
+}
+
+.user-name{
+    font-weight: bold;
+}
