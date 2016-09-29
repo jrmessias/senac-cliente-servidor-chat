@@ -18,7 +18,7 @@ $(document).ready(function () {
     var messageBox = $("#box-message");
 
     // Criação de um novo websocket
-    var wsUri = "ws://172.16.2.128:9000/server.php";
+    var wsUri = "ws://127.0.0.1:9000/server.php";
     websocket = new WebSocket(wsUri);
 
     websocket.onopen = function (e) { // Ao abrir a conexão

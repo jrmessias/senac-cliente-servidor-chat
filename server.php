@@ -1,5 +1,5 @@
 <?php
-$servidor = '172.16.2.128'; // host
+$servidor = '127.0.0.1'; // host
 $porta = '9000'; // porta
 $tempoLimite = 10 * 60; // minutos * segundos
 $null = null;
