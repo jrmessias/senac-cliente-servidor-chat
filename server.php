@@ -1,4 +1,6 @@
 <?php
+require_once("conexao.php");
+
 $servidor = '127.0.0.1'; // host
 $porta = '9000'; // porta
 $tempoLimite = 10 * 60; // minutos * segundos
@@ -62,18 +64,21 @@ while (true) {
             $mensagemDoUsuario = $jsonMensagem->message; //Texto
             $corDoUsuario = @$jsonMensagem->color; //Cor
 
-            if($nomeDoUsuario == null || $mensagemDoUsuario == null){
+            if ($nomeDoUsuario == null || $mensagemDoUsuario == null) {
                 break 2;
             }
-            
+
             //Prepara os dados para serem enviados para o cliente
-            $textoDaResposta = mask(json_encode(array(
+            $mensagemArray = array(
                 'type' => 'usermsg',
                 'name' => $nomeDoUsuario,
                 'message' => filtraPalavras($mensagemDoUsuario),
                 'color' => $corDoUsuario
-            )));
+            );
+            $textoDaResposta = mask(json_encode($mensagemArray));
             sendMessage($textoDaResposta); //Envia os dados
+            salvaMensagem($mensagemArray); // Salva no bd
+
             break 2; //Sai do loop
         }
 
@@ -167,10 +172,25 @@ function confirmaWebsocket($cabecalhoRecebido, $conexaoDoCliente, $servidor, $po
 }
 
 // Filtro de palavrões
-function filtraPalavras($mensagem){
+function filtraPalavras($mensagem)
+{
     $palavroes = ['cu', 'filho da puta', 'cabeção', 'merda', 'arrombado'];
-    foreach($palavroes as $palavrao){
+    foreach ($palavroes as $palavrao) {
         $mensagem = str_ireplace($palavrao, ':exclamation:', $mensagem);
     }
     return $mensagem;
+}
+
+// Salva Mensage
+function salvaMensagem($mensagem)
+{
+    global $link;
+
+    $sql = "INSERT INTO chat (cor, nome, mensagem, datahora) VALUES ('" . $mensagem['color'] .
+        "' , '" . $mensagem['name']  .
+        "' , '" . mysqli_escape_string($link, $mensagem['message']) .
+        "' , '" . date('Y-m-d H:i:s') . "')";
+    //sendMessage($sql);
+    mysqli_query($link, $sql);
+
 }
